@@ -44,6 +44,18 @@ cp .env.example .env
 
 ## Run
 
+Web app:
+
+```bash
+python web_app.py
+```
+
+Then open:
+
+```text
+http://127.0.0.1:5000
+```
+
 Export playlist files:
 
 ```bash

@@ -208,7 +208,13 @@ def parse_title_artist(sound: str) -> tuple[str, str | None]:
 def search_spotify(sp: spotipy.Spotify, sound: str, spotify_cache: dict, thorough: bool) -> dict | None:
     key = sound_key(sound)
     if key in spotify_cache:
-        return spotify_cache[key]
+        cached = spotify_cache[key]
+        if cached and "url" not in cached and cached.get("id"):
+            cached["url"] = f"https://open.spotify.com/track/{cached['id']}"
+            cached["uri"] = cached.get("uri") or f"spotify:track:{cached['id']}"
+            spotify_cache[key] = cached
+            save_json_file(SPOTIFY_CACHE_FILE, spotify_cache)
+        return cached
 
     sound_clean = clean_sound_name(sound)
     if SKIP_PATTERNS.search(sound_clean):
