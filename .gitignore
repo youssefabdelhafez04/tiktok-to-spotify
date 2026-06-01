@@ -3,5 +3,6 @@
 .tiktok_cache.json
 .spotify_match_cache.json
 user_data_tiktok.json
+exports/
 __pycache__/
 *.pyc
