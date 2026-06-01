@@ -2,6 +2,7 @@ import shutil
 import tempfile
 import uuid
 import zipfile
+import os
 from pathlib import Path
 
 from flask import Flask, render_template, request, send_file
@@ -96,4 +97,5 @@ def download(job_id: str):
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=False, use_reloader=False)
+    port = int(os.environ.get("PORT", "5050"))
+    app.run(host="127.0.0.1", port=port, debug=False, use_reloader=False)
