@@ -1,0 +1,7 @@
+.env
+.spotify_cache
+.tiktok_cache.json
+.spotify_match_cache.json
+user_data_tiktok.json
+__pycache__/
+*.pyc
